@@ -22,8 +22,10 @@ function verificação() {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ escrito: escrito })
+            }).then(r => r.json()).then(response => {
+                console.log(response)
             })
-            digitados.textContent =""
+            digitados.textContent = ""
             break
 
         case '40':
@@ -32,8 +34,10 @@ function verificação() {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ escrito: escrito })
+            }).then(r => r.json()).then(response => {
+                console.log(response)
             })
-            digitados.textContent =""
+            digitados.textContent = ""
             break
     }
 
@@ -52,7 +56,7 @@ const valorVermelho = document.querySelector(".valor-vermelho")
 const valorAmarelo = document.querySelector(".valor-amarelo")
 
 
-setInterval(async() => {
+setInterval(async () => {
     const servidorBom = await fetch("./lista.json").then(response => response.json())
     valorVermelho.textContent = ""
     valorAmarelo.textContent = ""

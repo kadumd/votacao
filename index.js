@@ -33,7 +33,7 @@ const servidor = http.createServer((pedido, resposta) => {
                 dadosDoBanco["55"].push(novosDados)
 
                 fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco));
-                resposta.end(JSON.stringify('oi'))
+                resposta.end(JSON.stringify({dadosDoBanco, novosDados}))
             })
             break
 
@@ -46,7 +46,7 @@ const servidor = http.createServer((pedido, resposta) => {
                 dadosDoBanco["40"].push(novosDados)
 
                 fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco));
-                resposta.end(JSON.stringify('oi'))
+                resposta.end(JSON.stringify({dadosDoBanco, novosDados}))
             })
             break
     }
