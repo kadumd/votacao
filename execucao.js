@@ -22,6 +22,7 @@ function verificação() {
                 method: "post",
                 body: JSON.stringify({ escrito: escrito })
             })
+            digitados.textContent =""
             break
 
         case '40':
@@ -30,8 +31,10 @@ function verificação() {
                 method: "post",
                 body: JSON.stringify({ escrito: escrito })
             })
+            digitados.textContent =""
             break
     }
+
 }
 function apagar() {
     digitados.textContent = ""
@@ -48,11 +51,10 @@ const valorAmarelo = document.querySelector(".valor-amarelo")
 
 
 setInterval(async() => {
-    const servidorRuim = await fetch("./lista.json")
-    const servidorBom = await servidorRuim.json()
+    const servidorBom = await fetch("./lista.json").then(response => response.json())
     valorVermelho.textContent = ""
     valorAmarelo.textContent = ""
 
-    valorVermelho.textContent += servidorBom["55"]["length"]
-    valorAmarelo.textContent += servidorBom["40"]["length"]
-}, 100);
+    valorVermelho.textContent += servidorBom["40"]["length"]
+    valorAmarelo.textContent += servidorBom["55"]["length"]
+}, 500);
