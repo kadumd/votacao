@@ -20,6 +20,7 @@ function verificação() {
             tela.style.backgroundColor = "yellow"
             fetch('/envio55', {
                 method: "post",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ escrito: escrito })
             })
             digitados.textContent =""
@@ -29,6 +30,7 @@ function verificação() {
             tela.style.backgroundColor = "red"
             fetch('/envio40', {
                 method: "post",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ escrito: escrito })
             })
             digitados.textContent =""

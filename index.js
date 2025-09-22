@@ -23,52 +23,33 @@ const servidor = http.createServer((pedido, resposta) => {
             resposta.end(fs.readFileSync("./lista.json"))
             break
 
+
         case '/envio55':
-            {
-                let body = "";
-                pedido.on("data", chunk => body += chunk);
-                pedido.on("end", () => {
-                    try {
-                        let dadosDoBanco = JSON.parse(fs.readFileSync('./lista.json'));
-                        let novosDados = JSON.parse(body);
+            pedido.on('data', (body) => {
+                console.log(JSON.parse(body))
+                let dadosDoBanco = JSON.parse(fs.readFileSync('./lista.json'))
+                let novosDados = JSON.parse(body)
 
-                        dadosDoBanco["55"].push(novosDados);
+                dadosDoBanco["55"].push(novosDados)
 
-                        fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco, null, 2));
-                        resposta.writeHead(200, { "Content-Type": "application/json" });
-                        resposta.end(JSON.stringify({ msg: "ok" }));
-                    } catch (err) {
-                        resposta.writeHead(500);
-                        resposta.end("Erro ao salvar dados");
-                        console.error(err);
-                    }
-                });
-            }
+                fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco));
+                resposta.end(JSON.stringify('oi'))
+            })
             break
 
         case '/envio40':
-            {
-                let body = "";
-                pedido.on("data", chunk => body += chunk);
-                pedido.on("end", () => {
-                    try {
-                        let dadosDoBanco = JSON.parse(fs.readFileSync('./lista.json'));
-                        let novosDados = JSON.parse(body);
+            pedido.on('data', (body) => {
+                console.log(JSON.parse(body))
+                let dadosDoBanco = JSON.parse(fs.readFileSync('./lista.json'))
+                let novosDados = JSON.parse(body)
 
-                        dadosDoBanco["40"].push(novosDados);
+                dadosDoBanco["40"].push(novosDados)
 
-                        fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco, null, 2));
-                        resposta.writeHead(200, { "Content-Type": "application/json" });
-                        resposta.end(JSON.stringify({ msg: "ok" }));
-                    } catch (err) {
-                        resposta.writeHead(500);
-                        resposta.end("Erro ao salvar dados");
-                        console.error(err);
-                    }
-                });
-            }
+                fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco));
+                resposta.end(JSON.stringify('oi'))
+            })
             break
     }
-});
+})
 
-servidor.listen(3000);
+servidor.listen(3000)
