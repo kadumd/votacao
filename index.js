@@ -29,7 +29,7 @@ const servidor = http.createServer((pedido, resposta) => {
                 console.log(JSON.parse(body))
                 let dadosDoBanco = JSON.parse(fs.readFileSync('./lista.json'))
                 let novosDados = JSON.parse(body)
-
+                console.log('oi')
                 dadosDoBanco["55"].push(novosDados)
 
                 fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco));
@@ -43,7 +43,7 @@ const servidor = http.createServer((pedido, resposta) => {
                 console.log(JSON.parse(body))
                 let dadosDoBanco = JSON.parse(fs.readFileSync('./lista.json'))
                 let novosDados = JSON.parse(body)
-
+                console.log('oi')
                 dadosDoBanco["40"].push(novosDados)
 
                 fs.writeFileSync('lista.json', JSON.stringify(dadosDoBanco));
